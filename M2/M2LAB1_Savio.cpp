@@ -20,11 +20,11 @@ int main() {
     // GET INPUT -- set up the store
     cout << "STORE SETUP" << endl;
     cout << "Product Name: ";
-    cin >> product_name;
+    cin  >> product_name;
     cout << "Item Count: ";
-    cin >> product_count;
-    cout << "Price Each:    $"
-    cin >> product_price;
+    cin  >> product_count;
+    cout << "Price Each:    $";
+    cin  >> product_price;
     
     // GET INPUT -- Great user, get their order
     cout << "--------------------------------" << endl << endl;
@@ -32,8 +32,8 @@ int main() {
     cout << "Welcome to the " << product_name << " shop." << endl;
     cout << "Our " << product_name << "(s) are $" << product_price << " each." << endl; 
 
-    cout << "How many would you like to buy today? "
-    cin  << purchase_count;
+    cout << "How many would you like to buy today? ";
+    cin  >> purchase_count;
 
     // DO THE PROCESSING
     // NOTE: we don't verify the user input -- the can buy more than we have, or a negative amount.
