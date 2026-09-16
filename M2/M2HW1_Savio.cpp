@@ -24,18 +24,20 @@ void question4();
 
 int main() {
     // Run only the questions you finish by removing the // 
-    //question1();
-    //question2();
-    //question3();
-    //question4();
+    question1();
+    question2();
+    question3();
+    question4();
 }
 
 void question1() {
-    cout << "Question 1 goes here" << endl;
+    cout << "Write a program that simulates banking transactions" << endl;
 }
 
 void question2() {
-    cout << "Question 2 goes here" << endl;
+    cout << "General Crates has found that the updated cost per cubic foot for storage is now 0.3, due to economic fluctuations." << endl;
+Management has determined that they cannot currently raise their charge per cubic foot above 0.52 without losing customers.
+Modify the program to match these new conditions
 }
 
 void question3() {
