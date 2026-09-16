@@ -5,19 +5,20 @@
 // C++ Homework, that i am REALLY late on doing
 
 #include <iostream>
+using namespace std;
 
 int main() {
     // Variables
     string movie_name = "Interstellar";
     string movie_director = "Christopher Nolan";
     int movie_year = "2014";
-    double millions_made = "783";
+    int millions_made = "783";
 
     //Output
-    cout <<"============================";
-    cout <<"=        Movie Talk        =";
-    cout <<"============================";
-    cout <<"Title:       "  << movie_name;
+    cout << "============================"; 
+    cout << "=        Movie Talk        ="; endl
+    cout << "============================"; endl
+    cout << "Title:      " << movie_name << endl;
 
 
 }
