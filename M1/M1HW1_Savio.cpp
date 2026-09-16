@@ -5,14 +5,15 @@
 // C++ Homework, that i am REALLY late on doing
 
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 int main() {
     // Variables
     string movie_name = "Interstellar";
     string movie_director = "Christopher Nolan";
-    int movie_year = "2014";
-    int millions_made = "783";
+    int movie_year = 2014;
+    int millions_made = 783;
 
     //Output
     cout << "============================"; 
