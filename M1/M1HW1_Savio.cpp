@@ -11,11 +11,13 @@ int main() {
     string movie_name = "Interstellar";
     string movie_director = "Christopher Nolan";
     int movie_year = "2014";
-    double millions_made = "783"
+    double millions_made = "783";
 
     //Output
-    cout <<"============================"
-    cout >>"=       Interstellar        "  
+    cout <<"============================";
+    cout <<"=        Movie Talk        =";
+    cout <<"============================";
+    cout <<"Title:       "  << movie_name;
 
 
 }
