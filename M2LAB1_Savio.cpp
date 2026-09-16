@@ -6,7 +6,7 @@ Savio
 Exercise 3.11 from Gaddis
 */
 #include <iostream>
-#include <iomanop>
+#include <iomanip>
 using namespace std;
 
 int main() {
