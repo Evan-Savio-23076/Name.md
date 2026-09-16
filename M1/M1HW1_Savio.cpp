@@ -17,8 +17,8 @@ int main() {
 
     //Output
     cout << "============================"; 
-    cout << "=        Movie Talk        ="; endl
-    cout << "============================"; endl
+    cout << "=        Movie Talk        ="  endl;
+    cout << "============================"  endl;
     cout << "Title:      " << movie_name << endl;
 
 
