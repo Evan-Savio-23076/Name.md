@@ -15,10 +15,18 @@ int main() {
     int millions_made = 783;
 
     //Output
-    cout << "============================" << endl; 
-    cout << "=        Movie Talk        =" << endl;
-    cout << "============================" << endl;  
-    cout << "Title:      " << movie_name << endl;
+    cout << "============================"           << endl; 
+    cout << "=        Movie Talk        ="           << endl;
+    cout << "============================"           << endl;  
+    cout << "Title:          " << movie_name         << endl;
+    cout << "Director:   " << movie_director         << endl;
+    cout << "Release year:       " << movie_year     << endl;
+    cout << "Money made:        $" << millions_made << "M" << endl;
+    cout << endl;  
+    cout << movie_name << " was a movie directed by " << movie_director << " in the year " << movie_year << endl;
+    cout << "It was a legendary movie for its phenomenal music composer, " << endl;
+    cout << "practical effects, and black hole simulation so high quality," << endl;
+    cout << "it actually furthered research in black holes in it of itself." << endl;
 
-
+    return 0; // no errors
 }
