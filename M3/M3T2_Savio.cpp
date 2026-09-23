@@ -1,5 +1,5 @@
  // CSC 134
- // M3T1 - Random Numbers
+ // M3T2 - Random Numbers
  // Savio, Z
  // 9/23/2026
  // Start writing a simple "craps" casino game
