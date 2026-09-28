@@ -43,16 +43,33 @@ int main() {
     cout << "       Answer 1:" << endl;
     cout << "-------------------------" << endl;
     cout << "Hello, welcome to CSC 134 banking, what would you like to do today? " << endl;
-    cout << "1: Display balance " << endl;
-    cout << "2: Deposit money "   << endl;
-    cout << "3: Withdrawl money " << endl;
-    cout << "4: Close atm application"
+    cout << "1: Display balance "      << endl;
+    cout << "2: Deposit money "        << endl;
+    cout << "3: Withdrawl money "      << endl;
+    cout << "4: Close atm application" << endl;
 
     // Calculate deposits and withdrawls
-      if (choice == 1) {
-        cout << "You have $" << account_base << " in your account, what would you like to do now? "
-         
+    if (choice == 1) {
+            cout << "You have $" << account_base << " in your account, what would you like to do now? " << endl;
+            cout << "1: Deposit money "   << endl;
+            cout << "2: Withdrawl money " << endl;
+            cout << "3: Close atm application"
+
     }
+
+    if (choice == 2) {
+
+    } 
+
+    if (choice == 3) {
+
+    }
+    
+    if (choice == 4) {
+        
+    }
+
+
     // Formatting: Set all prices to 2 decimal places
     cout << setprecision(2) << fixed;
 
