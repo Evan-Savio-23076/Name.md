@@ -35,12 +35,14 @@ int main() {
 
  void question1() {
     // Setup Strings and integers
-    int account_base = 10000;
-    int choice;
-    double account_subbed, account_added, withdraw_value, deposit_value;
-
+    int account_base = 10000;                                       // Base bank value
+    int choice, yesno, Y, y, n, N;   // User interaction intigers
+    int account_subbed, account_added;    
+    double deposit_value;
+    double withdraw_value;                          // End result intigers
     
     // Setup starting amount in account and greetings
+    answer_1:
     cout << "       Answer 1:" << endl;
     cout << "-------------------------" << endl;
     cout << "Hello, welcome to CSC 134 banking, what would you like to do today? " << endl;
@@ -50,55 +52,50 @@ int main() {
     cout << "4: Close atm application " << endl;
     cin  >> choice;
 
-    //      Calculate deposits and withdrawls (for later)
+    // Calculate deposits and withdrawls (for later)
     // account_subbed = account_base - withdraw_value;
     // account_added  = account_base + deposit_value;
 
     // if and else if statements for user choices
     if (choice == 1) {
-         cout << "You have $" << account_base << " in your account, what would you like to do now? " << endl;
+         cout << "You have $" << account_base << " in your account, now, what would you like to do now? " << endl;
+         goto answer_1;
     }
-
     else if (choice == 2) {
          cout << "How much would you like to deposit?" << endl;
          cin  >> deposit_value;
          
-             if (deposit_value >= 0) { 
-            account_added  = account_base + deposit_value;
-         cout << "You now have $" << account_added << " in your account. Thank you for using CSC 134 banking, and have a great day!" << endl; 
+         if (deposit_value >= 0) { 
+             account_added  = account_base + deposit_value;
+             cout << "You now have $" << account_added << " in your account. Thank you for using CSC 134 banking, and have a great day!" << endl; 
         } 
-             else if (deposit_value < 0) { 
-         cout << "Sorry, but that is an invalid number, did you mean to withdraw instead?" << endl; 
+         else if (deposit_value < 0) { 
+             cout << "Sorry, but that is an invalid number, returning to main interface";
+             goto answer_1;    
         } 
-
     } 
 
     else if (choice == 3) {
-        cout << "How much would you like to withdraw?" << endl;
+         cout << "How much would you like to withdraw?" << endl;
          cin  >> withdraw_value;
          
-             if (deposit_value >= 0) { 
-            account_added  = account_base + deposit_value;
-         cout << "You now have $" << account_subbed << " in your account. Thank you for using CSC 134 banking, and have a great day!" << endl; 
+         if (withdraw_value >= 0) { 
+             account_subbed  = account_base - withdraw_value;
+             cout << "You now have $" << account_subbed << " in your account. Thank you for using CSC 134 banking, and have a great day!" << endl; 
         } 
-             else if (deposit_value < 0) { 
-         cout << "Sorry, but that is an invalid number, did you mean to deposit instead?" << endl; 
+         else if (withdraw_value < 0) { 
+             cout << "Sorry, but that is an invalid number, returning to main interface";
+             goto answer_1;    
         } 
-
-
     }
     
     else if (choice == 4) {
-        
+        cout << endl;
     }
-
-
-    // Formatting: Set all prices to 2 decimal places
-    cout << setprecision(2) << fixed;
-
+    return; // to stop runaway stuff or bugs and whatnot i guess
     // Results
 
-}
+ }
 
 void question2() {
 
