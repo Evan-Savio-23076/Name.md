@@ -34,34 +34,35 @@ int main() {
 }
 
  void question1() {
-    // Setup Strings and integers
-    int account_base = 10000;                                       // Base bank value
-    int choice, yesno, Y, y, n, N;   // User interaction intigers
-    int account_subbed, account_added;    
-    double deposit_value;
-    double withdraw_value;                          // End result intigers
+     // Setup Strings and integers
+     int account_base = 10000;    // Base bank value
+     int choice, yesno, Y, y, n, N;                            
+     int account_subbed, account_added;    
+     double deposit_value;
+     double withdraw_value;                        
     
-    // Setup starting amount in account and greetings
-    answer_1:
-    cout << "       Answer 1:" << endl;
-    cout << "-------------------------" << endl;
-    cout << "Hello, welcome to CSC 134 banking, what would you like to do today? " << endl;
-    cout << "1: Display balance "       << endl;
-    cout << "2: Deposit money "         << endl;
-    cout << "3: Withdraw money "       << endl;
-    cout << "4: Close atm application " << endl;
-    cin  >> choice;
+     // Setup starting amount in account and greetings
+     answer_1:
+     cout                                << endl;
+     cout << "       Answer 1:"          << endl;
+     cout << "-------------------------" << endl;
+     cout << "Hello, welcome to CSC 134 banking, what would you like to do today? " << endl;
+     cout << "1: Display balance "       << endl;
+     cout << "2: Deposit money "         << endl;
+     cout << "3: Withdraw money "        << endl;
+     cout << "4: Close atm application " << endl;
+     cin  >> choice;
 
-    // Calculate deposits and withdrawls (for later)
-    // account_subbed = account_base - withdraw_value;
-    // account_added  = account_base + deposit_value;
+     // Calculate deposits and withdrawls (for later)
+     // account_subbed = account_base - withdraw_value;
+     // account_added  = account_base + deposit_value;
 
-    // if and else if statements for user choices
-    if (choice == 1) {
+     // if and else if statements for user choices
+      if (choice == 1) {
          cout << "You have $" << account_base << " in your account, now, what would you like to do now? " << endl;
          goto answer_1;
-    }
-    else if (choice == 2) {
+     }
+     else if (choice == 2) {
          cout << "How much would you like to deposit?" << endl;
          cin  >> deposit_value;
          
@@ -73,9 +74,9 @@ int main() {
              cout << "Sorry, but that is an invalid number, returning to main interface";
              goto answer_1;    
         } 
-    } 
+     } 
 
-    else if (choice == 3) {
+     else if (choice == 3) {
          cout << "How much would you like to withdraw?" << endl;
          cin  >> withdraw_value;
          
@@ -87,13 +88,22 @@ int main() {
              cout << "Sorry, but that is an invalid number, returning to main interface";
              goto answer_1;    
         } 
-    }
+     }
     
-    else if (choice == 4) {
+     else if (choice == 4) {
         cout << endl;
-    }
-    return; // to stop runaway stuff or bugs and whatnot i guess
-    // Results
+     }
+     
+     else { cout << "It's 1,2,3, or 4. Please try again please" << endl;
+         
+     }
+     return;      // to stop runaway stuff or bugs and whatnot i guess
+   
+     //                            Results
+
+    // So i know i could do a lot more when it comes to this, i could make all paths return to answer_1 so it could actually save deposits and withdrawls,
+    // random variation for the starting money, more precise money via decimals for coins, etc.
+    // I think I should just stop though so you need not to inspect over 100 lines of code for 1 problem
 
  }
 
