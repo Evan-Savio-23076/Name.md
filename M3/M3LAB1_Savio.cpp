@@ -1,7 +1,8 @@
-// CSC 134
-//
-//
-//
+ // CSC 134
+ // M3LAB1
+ // Savio, Z
+ // 9/23/2026
+ // pick the door
 
 #include <iostream>
 using namespace std;
