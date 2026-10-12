@@ -11,12 +11,23 @@ int main() {
     string token = "👀"; // use any character you want (I'm just copying teacher for convenience sake)
     //const int WIDTH  = 5;
     //const int HEIGHT  = 5;
-    int width, height;
-    // Get width and height
-    cout << "Enter rectangle width: ";
-    cin >> width;
-    cout << "Enter rectangle height: ";
-    cin >> height;
+    // Get validated values
+    int width = 0;
+    int height = 0;
+    while (width <+ 0 || height <= 0) {
+        cout << "Enter rectangle width: ";
+        cin >> width;
+        cout << "Enter rectangle height: ";
+        cin >> height;
+        // optional: complain
+        if( width <=0) {
+            cout << "Width cannot be zero or negative." << endl;
+        }
+        if( height <=0) {
+            cout << "Height cannot be zero or negative." << endl;
+        }
+    }
+
 
     cout << "Part 1 " << endl;
     // First part: Printing one row
