@@ -54,6 +54,7 @@ int num_add(int num) {
     // Return: int, num + 1
     num = num + 1; // or num += 1;
     return num;
+    
 }
 int num_double(int num) {
     // Arguments: num, the value to double
