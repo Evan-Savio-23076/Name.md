@@ -13,23 +13,33 @@ using namespace std;
 // Void functions
 void greet();
 void speak(string message);
+// Value-returning functions
+int num_add(int num);
+int num_double(int num);
 
 int main() {
-    
+
     cout << "Void Function Example" << endl;
     greet();
     speak("Hello, world!");
     speak("Another message.");
+    cout << "Value Returning Example" << endl;
+    int number;
+    cout << "Enter an integer: ";
+    cin >> number;
+    int answer = num_add(number);
+    cout << "num_add(" << number << ") returns: " << answer << endl;
+
+    answer = num_double(number);
+    cout << "num_double(" << number << ") returns: " << answer << endl;
 
     return 0;
 }
-
 // Define functions here
 void greet() {
     // greet the user: no arguments, no return out
     cout << "What's up?" << endl;
 }
-
 void speak(string message) {
     // talk to user
     // arguments: string, the message to speak
@@ -37,4 +47,17 @@ void speak(string message) {
     // (This would be useful if I wanted to speak text to look a certain way, etc.)
     cout << message << endl;
 
+}
+// Value-returning functions
+int num_add(int num) {
+    // Arguments: num, the, value to start with
+    // Return: int, num + 1
+    num = num + 1; // or num += 1;
+    return num;
+}
+int num_double(int num) {
+    // Arguments: num, the value to double
+    // Return: int, num * 2
+    num *= 2; // same as num = num * 2;
+    return num;
 }
