@@ -36,7 +36,7 @@ main_menu
                      2 -> disarm trap and get key
                          output obtained_Frontkey, return to choice_front_door
              3 -> return to choice_front_door
-         3 -> go to main_menu
+         3 -> go to main_menu   
   2 -> choice_back_door
          1 -> open_the_cellar
              output door locked

@@ -99,10 +99,10 @@ cin.ignore(numeric_limits<streamsize>::max(), '\n');
     open_front_door();
     } 
     else if (2 == choice) {
-    inspect_area();
+    inspect_front_door();
     } 
     else if (3 == choice) {
-    choice_go_home();
+    main_menu();
     }
     else if (4 == choice) {
     cout << "Ok, quitting game" << endl;
@@ -114,6 +114,8 @@ cin.ignore(numeric_limits<streamsize>::max(), '\n');
     }
 
 }
+
+
 
 void choice_back_door() {
 cout << "TODO: Write something here" << endl;
