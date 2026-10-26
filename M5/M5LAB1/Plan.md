@@ -22,7 +22,7 @@ main_menu
                                      2 -> return to choice_front_door with front_door_unlocked
                              2 -> return to choice_front_door
                      2 -> return to choice_front_door
-         2 -> inspect_area
+         2 -> inspect_front_area
              output "found something of note"
              1 -> get key?
                  1 -> yes
@@ -60,7 +60,7 @@ main_menu
 - cellar_escape      (new, ending)
 
 - open_front_door
-- inspect_area
+- inspect_front_area
 - choice_front_door
 - choice_attack_door
 - choice_attack_door2

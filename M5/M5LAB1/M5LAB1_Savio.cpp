@@ -18,13 +18,16 @@ using namespace std;
 // tells it: "this function exists, and its full code is below."
 
 // Integers
-int 
+int hands_hurt;
+int brick;
 
 // Void functions
 void main_menu();
 void choice_front_door();
 void choice_back_door();
 void choice_go_home();
+void open_front_door();
+void inspect_front_door();
 
 
 // TODO: add your new prototypes here
@@ -65,10 +68,10 @@ cin.ignore(numeric_limits<streamsize>::max(), '\n');
     choice_front_door();
     } 
     else if (2 == choice) {
-    // call choice 2 here
+    choice_back_door();
     } 
     else if (3 == choice) {
-    // call choice 3 here
+    choice_go_home();
     }
     else if (4 == choice) {
     cout << "Ok, quitting game" << endl;
@@ -81,6 +84,35 @@ cin.ignore(numeric_limits<streamsize>::max(), '\n');
 }
 
 void choice_front_door() {
+    cout << "What will you do at the front door?" << endl;
+    cout << "1. Attempt to open the door" << endl;
+    cout << "2. Inspect the area around the door" << endl;
+    cout << "3. back away from the house" << endl;
+    cin  >> choice;
+    if (cin.fail()) {
+        cin.clear(); 
+        choice = 0; 
+    }
+
+cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    if (1 == choice) {
+    open_front_door();
+    } 
+    else if (2 == choice) {
+    inspect_area();
+    } 
+    else if (3 == choice) {
+    choice_go_home();
+    }
+    else if (4 == choice) {
+    cout << "Ok, quitting game" << endl;
+    return; // go back to main()
+    } 
+    else {
+    cout << "That's not a valid choice, please try again." << endl;
+    main_menu(); // try again
+    }
+
 }
 
 void choice_back_door() {
