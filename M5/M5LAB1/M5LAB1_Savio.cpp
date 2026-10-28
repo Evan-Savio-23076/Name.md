@@ -70,7 +70,7 @@ cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
 #include <iostream>
 #include <limits>
-#include <__clang_cuda_device_functions.h>      // functions.h
+//#include "functions.h"      // functions.h
 
 using namespace std;
 // FUNCTION PROTOTYPES
@@ -94,6 +94,8 @@ void open_door_back();
 void inspect_area_back();
 void inspect_area_back2();
 void enter_house();
+void clearInput();
+void saved_space();
 int main() {
   cout << "M5LAB1 - Choose Your Own Adventure" << endl;
   main_menu();
@@ -101,7 +103,21 @@ int main() {
   return 0;
 }
 
-// FUNCTION DEFINITIONS
+void saved_space() {
+    cout << endl;
+    cout << "Choose: ";
+    cout << endl;
+}
+
+void clearInput(std::istream& is, int& choice) {
+
+    if (is.fail()) {
+        is.clear();
+        choice = 0;
+    }
+    is.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+}
+
 void main_menu() {
   cout << "Main Menu" << endl;
   cout << "Do you:" << endl;
@@ -109,24 +125,24 @@ void main_menu() {
   cout << "2. back door" << endl;
   cout << "3. leave" << endl;
   cout << "4. [Quit]" << endl;
-  cout << "Choose: ";
-  int choice = 0;
-  cin >> choice;
-  if (cin.fail()) {
-    cin.clear();
-    choice = 0;
-  }
-  cin.ignore(numeric_limits<streamsize>::max(), '\n');
+  void saved_space();
+  
+  clearInput(cin, choice);
+
   if (1 == choice) {
     choice_front_door();
-  } else if (2 == choice) {
+  } 
+  else if (2 == choice) {
     choice_back_door();
-  } else if (3 == choice) {
+  } 
+  else if (3 == choice) {
     choice_go_home();
-  } else if (4 == choice) {
-    cout << "Ok, quitting game" << endl;
+  } 
+  else if (4 == choice) {
+    cout << "Ok, quitting game, coward!" << endl;
     return;
-  } else {
+  } 
+  else {
     cout << "That's not a valid choice, please try again." << endl;
     main_menu();
   }
