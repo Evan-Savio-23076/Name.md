@@ -137,12 +137,13 @@ void choice_invalid() {
 }
 
   void main_menu() {
-  cout << "Main Menu" << endl;
   cout << "What do you choose to do?:" << endl;
+  cout << endl;
   cout << "1. Check the front door?" << endl;
-  cout << "2. check the back door?" << endl;
+  cout << "2. Check the backyard?" << endl;
   cout << "3. Leave, and come back the way you came?" << endl;
   cout << "4. [Quit]" << endl;
+  cout << endl;
   int choice = 0;
   choice_input(choice);
 
@@ -156,6 +157,7 @@ void choice_invalid() {
     choice_go_home();
   } 
   else if (4 == choice) {
+    cout << endl;
     cout << "Ok, quitting game." << endl;
     cout << endl;
     return;
@@ -167,13 +169,12 @@ void choice_invalid() {
 }
 
 void choice_front_door() {
-  cout << endl;
   cout << "You're now at the front door, what do you do?" << endl;
   cout << endl;
-  cout << "1. inspect " << endl;
-  cout << "2. open door" << endl;
-  cout << "3. attack door" << endl;
-  cout << "4. go back main" << endl;
+  cout << "1. Inspect the area around the door? " << endl;
+  cout << "2. Attempt to open the door?" << endl;
+  cout << "3. Try showing the door who's boss." << endl;
+  cout << "4. Leave the front door." << endl;
   cout << "Choose: ";
   int choice = 0;
   choice_input(choice);
@@ -192,14 +193,15 @@ void choice_front_door() {
   }
   else {
    choice_invalid();
+   choice_front_door();
   }
 
 }
 
 void choice_back_door() {
-  cout << "TODO: Write something here" << endl;
-  cout << "Do you:" << endl;
-  cout << "1. go to celler door" << endl;
+  cout << "You are now in the backyard, what do you choose do now?:" << endl;
+  cout << endl;
+  cout << "1. Go to the Celler door?" << endl;
   cout << "2. inspect area" << endl;
   cout << "3. go back" << endl;
   cout << "Choose: ";
