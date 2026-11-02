@@ -168,9 +168,9 @@ void choice_invalid() {
 
 void choice_front_door() {
   cout << endl;
-  cout << "Do you:" << endl;
+  cout << "You're now at the front door, what do you do?" << endl;
   cout << endl;
-  cout << "1. inspect area" << endl;
+  cout << "1. inspect " << endl;
   cout << "2. open door" << endl;
   cout << "3. attack door" << endl;
   cout << "4. go back main" << endl;
