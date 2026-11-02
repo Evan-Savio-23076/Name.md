@@ -191,7 +191,7 @@ void choice_front_door() {
     main_menu();
   }
   else {
-    choice_invalid();
+   choice_invalid();
   }
 
 }
@@ -204,7 +204,7 @@ void choice_back_door() {
   cout << "3. go back" << endl;
   cout << "Choose: ";
   int choice = 0;
-  choice_input();
+  choice_input(choice);
 
   if (1 == choice) {
     open_door_back();
