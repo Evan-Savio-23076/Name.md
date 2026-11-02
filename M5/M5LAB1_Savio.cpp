@@ -70,10 +70,10 @@ cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
 #include <iostream>
 #include <limits>
-//#include "functions.h"      // functions.h
-
 using namespace std;
+
 // FUNCTION PROTOTYPES
+
 void main_menu();
 void choice_front_door();
 void choice_back_door();
