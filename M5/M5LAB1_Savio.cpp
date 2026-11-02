@@ -97,7 +97,18 @@ void enter_house();
 void choice_input();
 void choice_invalid();
 
+// Global Ints
+int key;
+int hand_health = 3;
+
 int main() {
+  cout << endl;
+  cout << endl;
+  cout << endl;
+  cout << endl;
+  cout << endl;
+  cout << endl;
+  cout << endl;
   cout << "M5LAB1 - Choose Your Own Adventure" << endl;
   main_menu();
   cout << "Thanks for playing!" << endl;
@@ -136,7 +147,7 @@ void choice_invalid() {
     cout << endl;
 }
 
-  void main_menu() {
+void main_menu() {
   cout << "What do you choose to do?:" << endl;
   cout << endl;
   cout << "1. Check the front door?" << endl;
@@ -202,8 +213,8 @@ void choice_back_door() {
   cout << "You are now in the backyard, what do you choose do now?:" << endl;
   cout << endl;
   cout << "1. Go to the Celler door?" << endl;
-  cout << "2. inspect area" << endl;
-  cout << "3. go back" << endl;
+  cout << "2. Inspect the backyard?" << endl;
+  cout << "3. Leave the backyard." << endl;
   cout << "Choose: ";
   int choice = 0;
   choice_input(choice);
@@ -219,6 +230,7 @@ void choice_back_door() {
   }
   else {
     choice_invalid();
+    choice_back_door();
   }
   
 }
@@ -228,11 +240,13 @@ void choice_go_home() {
 }
 
 void inspect_area_front() {
-  cout << "Write this part of the story here." << endl;
-  cout << "Do you:" << endl;
-  cout << "1. inspect area more?" << endl;
-  cout << "2. get key anyway" << endl;
-  cout << "3. Go back" << endl;
+  cout << "You decide to look around in the nearby shrubs and stones, and see what looks like a key under some thick brambles." << endl;
+  cout << endl;
+  cout << "What do you do now?:" << endl;
+  cout << endl;
+  cout << "1. Inspect the placement of the key more closely." << endl;
+  cout << "2. Grab the free spare key." << endl;
+  cout << "3. Stop looking around, and back up a little." << endl;
   cout << "Choose: ";
   int choice = 0;
   choice_input(choice);
@@ -252,19 +266,24 @@ void inspect_area_front() {
 }
 
 void get_key_hurt() {
-  cout << "get key" << endl;
-  cout << "" << endl;
-  cout << "Do you:" << endl;
-  cout << "1. go back" << endl;
+  cout << "You grabbed the key, but there was a mini bear trap under it, hurting your hand badly" << endl;
+  cout << "You did get the key though." << endl;
+  cout << endl;
+  cout << "Key acquired " << endl;
+  cout << endl;
+  cout << "Press 1 to continue" << endl;
   cout << "Choose: ";
   int choice = 0;
   choice_input(choice);
 
   if (1 == choice) {
     choice_front_door();
+    hand_health = hand_health - 2;
+    key = 1;
   }
-    else {
-  choice_invalid();
+  else {
+    choice_invalid();
+    get_key_hurt();
   }
 }
 
