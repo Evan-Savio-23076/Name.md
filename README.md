@@ -4,8 +4,8 @@
 Currently taking CSC-134 and getting ready to learn C++!
 
 ## My Foo (special interest) 🎯
-- Currently researching insects and agricture (specifically lepidoptera and hymenoptera)
-- I play a myriad of instrumentals, although not that well
+- Currently researching insects and agriculture (specifically lepidoptera and hymenoptera)
+- I play a myriad of instruments, although not that well
 - Engineering is interesting to me
 
 ## Currently Learning
