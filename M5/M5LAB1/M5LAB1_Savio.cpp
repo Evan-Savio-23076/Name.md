@@ -94,8 +94,9 @@ void open_door_back();
 void inspect_area_back();
 void inspect_area_back2();
 void enter_house();
-void clearInput();
-void saved_space();
+void choice_input();
+void choice_invalid();
+
 int main() {
   cout << "M5LAB1 - Choose Your Own Adventure" << endl;
   main_menu();
@@ -103,31 +104,47 @@ int main() {
   return 0;
 }
 
-void saved_space() {
+void choice_input(int &choice) {
+  cin >> choice;
+  if (cin.fail()) {
+    cin.clear(); 
+    choice = 0; 
+  }
+
+  cin.ignore(numeric_limits<streamsize>::max(), '\n');
+  cout << endl;
+  cout << endl;
+  cout << endl;
+  cout << endl;
+  cout << endl;
+  cout << endl;
+  cout << endl;
+  cout << endl;
+  cout << endl;
+  cout << endl;
+}
+
+void choice_invalid() {
     cout << endl;
-    cout << "Choose: ";
+    cout << endl;
+    cout << endl;
+    cout << endl;
+    cout << "That's not a valid choice, please try again." << endl;
+    cout << endl;
+    cout << endl;
+    cout << endl;
     cout << endl;
 }
 
-void clearInput(std::istream& is, int& choice) {
-
-    if (is.fail()) {
-        is.clear();
-        choice = 0;
-    }
-    is.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-}
-
-void main_menu() {
+  void main_menu() {
   cout << "Main Menu" << endl;
-  cout << "Do you:" << endl;
-  cout << "1. Front door" << endl;
-  cout << "2. back door" << endl;
-  cout << "3. leave" << endl;
+  cout << "What do you choose to do?:" << endl;
+  cout << "1. Check the front door?" << endl;
+  cout << "2. check the back door?" << endl;
+  cout << "3. Leave, and come back the way you came?" << endl;
   cout << "4. [Quit]" << endl;
-  void saved_space();
-  
-  clearInput(cin, choice);
+  int choice = 0;
+  choice_input(choice);
 
   if (1 == choice) {
     choice_front_door();
@@ -139,34 +156,46 @@ void main_menu() {
     choice_go_home();
   } 
   else if (4 == choice) {
-    cout << "Ok, quitting game, coward!" << endl;
+    cout << "Ok, quitting game." << endl;
+    cout << endl;
     return;
   } 
   else {
-    cout << "That's not a valid choice, please try again." << endl;
+    choice_invalid();
     main_menu();
   }
 }
+
 void choice_front_door() {
-  cout << "" << endl;
+  cout << endl;
   cout << "Do you:" << endl;
+  cout << endl;
   cout << "1. inspect area" << endl;
   cout << "2. open door" << endl;
   cout << "3. attack door" << endl;
   cout << "4. go back main" << endl;
   cout << "Choose: ";
   int choice = 0;
-  cin >> choice;
+  choice_input(choice);
+
   if (1 == choice) {
     inspect_area_front();
-  } else if (2 == choice) {
+  } 
+  else if (2 == choice) {
     open_door_front();
-  } else if (3 == choice) {
+  } 
+  else if (3 == choice) {
     choice_attack_door();
-  } else if (4 == choice) {
+  } 
+  else if (4 == choice) {
     main_menu();
   }
+  else {
+    choice_invalid();
+  }
+
 }
+
 void choice_back_door() {
   cout << "TODO: Write something here" << endl;
   cout << "Do you:" << endl;
@@ -175,18 +204,27 @@ void choice_back_door() {
   cout << "3. go back" << endl;
   cout << "Choose: ";
   int choice = 0;
-  cin >> choice;
+  choice_input();
+
   if (1 == choice) {
     open_door_back();
-  } else if (2 == choice) {
+  } 
+  else if (2 == choice) {
     inspect_area_back();
-  } else if (3 == choice) {
+  } 
+  else if (3 == choice) {
     main_menu();
   }
+  else {
+    choice_invalid();
+  }
+  
 }
+
 void choice_go_home() {
   cout << "TODO: Write something here" << endl;
 }
+
 void inspect_area_front() {
   cout << "Write this part of the story here." << endl;
   cout << "Do you:" << endl;
@@ -195,15 +233,22 @@ void inspect_area_front() {
   cout << "3. Go back" << endl;
   cout << "Choose: ";
   int choice = 0;
-  cin >> choice;
+  choice_input(choice);
+
   if (1 == choice) {
     inspect_area_front2();
-  } else if (2 == choice) {
+  } 
+  else if (2 == choice) {
     get_key_hurt();
-  } else if (3 == choice) {
+  } 
+  else if (3 == choice) {
     choice_front_door();
   }
+  else {
+    choice_invalid();
+  }
 }
+
 void get_key_hurt() {
   cout << "get key" << endl;
   cout << "" << endl;
@@ -211,11 +256,16 @@ void get_key_hurt() {
   cout << "1. go back" << endl;
   cout << "Choose: ";
   int choice = 0;
-  cin >> choice;
+  choice_input(choice);
+
   if (1 == choice) {
     choice_front_door();
   }
+    else {
+  choice_invalid();
+  }
 }
+
 void inspect_area_front2() {
   cout << "Write this part of the story here." << endl;
   cout << "Do you:" << endl;
@@ -224,37 +274,54 @@ void inspect_area_front2() {
   cout << "3. go back" << endl;
   cout << "Choose: ";
   int choice = 0;
-  cin >> choice;
+  choice_input(choice);
+
   if (1 == choice) {
     disarm_trap_front();
-  } else if (2 == choice) {
+  } 
+  else if (2 == choice) {
     get_key_hurt();
-  } else if (3 == choice) {
+  } 
+  else if (3 == choice) {
     choice_front_door();
   }
+  else {
+    choice_invalid();
+  }
 }
+
 void disarm_trap_front() {
   cout << "\"add press one to continue\"" << endl;
   cout << "Do you:" << endl;
   cout << "1. get key" << endl;
   cout << "Choose: ";
   int choice = 0;
-  cin >> choice;
+  choice_input(choice);
+
   if (1 == choice) {
     get_key();
   }
+  else {
+    choice_invalid();
+  }
 }
+
 void get_key() {
   cout << "Write this part of the story here." << endl;
   cout << "Do you:" << endl;
   cout << "1. go to " << endl;
   cout << "Choose: ";
   int choice = 0;
-  cin >> choice;
+  choice_input(choice);
+
   if (1 == choice) {
     choice_front_door();
   }
+  else {
+    choice_invalid();
+  }
 }
+
 void open_door_front() {
   cout << "Write this part of the story here." << endl;
   cout << "Do you:" << endl;
@@ -262,24 +329,35 @@ void open_door_front() {
   cout << "2. if kkey" << endl;
   cout << "Choose: ";
   int choice = 0;
-  cin >> choice;
+  choice_input(choice);
+
   if (1 == choice) {
     choice_front_door();
-  } else if (2 == choice) {
+  } 
+  else if (2 == choice) {
     unlock_door_front();
   }
+  else {
+    choice_invalid();
+  }
 }
+
 void unlock_door_front() {
   cout << "Write this part of the story here." << endl;
   cout << "Do you:" << endl;
   cout << "1. enter house" << endl;
   cout << "Choose: ";
   int choice = 0;
-  cin >> choice;
+  choice_input(choice);
+
   if (1 == choice) {
     enter_house();
   }
+  else {
+    choice_invalid();
+  }
 }
+
 void choice_attack_door() {
   cout << "Write this part of the story here." << endl;
   cout << "Do you:" << endl;
@@ -288,15 +366,22 @@ void choice_attack_door() {
   cout << "3. You sure? Y (with brick)" << endl;
   cout << "Choose: ";
   int choice = 0;
-  cin >> choice;
+  choice_input(choice);
+
   if (1 == choice) {
     attack_door2();
-  } else if (2 == choice) {
+  } 
+  else if (2 == choice) {
     choice_front_door();
-  } else if (3 == choice) {
+  } 
+  else if (3 == choice) {
     smash_knob_secret();
   }
+  else {
+    choice_invalid();
+  }
 }
+
 void attack_door2() {
   cout << "Write this part of the story here." << endl;
   cout << "Do you:" << endl;
@@ -304,13 +389,19 @@ void attack_door2() {
   cout << "2. stop" << endl;
   cout << "Choose: ";
   int choice = 0;
-  cin >> choice;
+  choice_input(choice);
+
   if (1 == choice) {
     attack_door3();
-  } else if (2 == choice) {
+  } 
+  else if (2 == choice) {
     choice_front_door();
   }
+  else {
+    choice_invalid();
+  }
 }
+
 void attack_door3() {
   cout << "Write this part of the story here." << endl;
   cout << "Do you:" << endl;
@@ -318,46 +409,67 @@ void attack_door3() {
   cout << "2. stop" << endl;
   cout << "Choose: ";
   int choice = 0;
-  cin >> choice;
+  choice_input(choice);
+
   if (1 == choice) {
     unlock_door_frontalt();
-  } else if (2 == choice) {
+  } 
+  else if (2 == choice) {
     main_menu();
   }
+  else {
+    choice_invalid();
+  }
 }
+
 void unlock_door_frontalt() {
   cout << "Write this part of the story here." << endl;
   cout << "Do you:" << endl;
   cout << "1. enter" << endl;
   cout << "Choose: ";
   int choice = 0;
-  cin >> choice;
+  choice_input(choice);
+
   if (1 == choice) {
     enter_house();
   }
+  else {
+    choice_invalid();
+  }
 }
+
 void smash_knob_secret() {
   cout << "Write this part of the story here." << endl;
   cout << "Do you:" << endl;
   cout << "1. enter" << endl;
   cout << "Choose: ";
   int choice = 0;
-  cin >> choice;
+  choice_input(choice);
+
   if (1 == choice) {
     enter_house();
   }
+  else {
+    choice_invalid();
+  }
 }
+
 void open_door_back() {
   cout << "Write this part of the story here." << endl;
   cout << "Do you:" << endl;
   cout << "1. locked and unmovable" << endl;
   cout << "Choose: ";
   int choice = 0;
-  cin >> choice;
+  choice_input(choice);
+
   if (1 == choice) {
     choice_back_door();
   }
+  else {
+    choice_invalid();
+  }
 }
+
 void inspect_area_back() {
   cout << "Write this part of the story here." << endl;
   cout << "Do you:" << endl;
@@ -365,24 +477,35 @@ void inspect_area_back() {
   cout << "2. No more search" << endl;
   cout << "Choose: ";
   int choice = 0;
-  cin >> choice;
+  choice_input(choice);
+
   if (1 == choice) {
     inspect_area_back2();
-  } else if (2 == choice) {
+  } 
+  else if (2 == choice) {
     choice_back_door();
   }
+  else {
+    choice_invalid();
+  }
 }
+
 void inspect_area_back2() {
   cout << "add brick intiger" << endl;
   cout << "Do you:" << endl;
   cout << "1. inspect_area_back2" << endl;
   cout << "Choose: ";
   int choice = 0;
-  cin >> choice;
+  choice_input(choice);
+
   if (1 == choice) {
     choice_back_door();
   }
+  else {
+    choice_invalid();
+  }
 }
+
 void enter_house() {
   cout << "You see ghost" << endl;
   cout << "// make endings if statements" << endl;
