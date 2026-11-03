@@ -191,7 +191,14 @@ void choice_front_door() {
   choice_input(choice);
 
   if (1 == choice) {
-    inspect_area_front();
+    if (key == 0) {
+      inspect_area_front();
+    }
+    else if (key == 1) {
+      cout << "There is nothing left of note to see." << endl;
+      cout << endl;
+      choice_front_door();
+    }
   } 
   else if (2 == choice) {
     open_door_front();
@@ -277,9 +284,9 @@ void get_key_hurt() {
   choice_input(choice);
 
   if (1 == choice) {
-    choice_front_door();
     hand_health = hand_health - 2;
     key = 1;
+    choice_front_door();
   }
   else {
     choice_invalid();
