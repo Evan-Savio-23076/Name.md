@@ -82,7 +82,6 @@ void inspect_area_front();
 void get_key_hurt();
 void inspect_area_front2();
 void disarm_trap_front();
-void get_key();
 void open_door_front();
 void unlock_door_front();
 void choice_attack_door();
@@ -243,7 +242,7 @@ void choice_back_door() {
 }
 
 void choice_go_home() {
-  cout << "TODO: Write something here" << endl;
+  cout << "You decide to forgo the adventure and go home." << endl;
 }
 
 void inspect_area_front() {
@@ -269,11 +268,12 @@ void inspect_area_front() {
   }
   else {
     choice_invalid();
+    inspect_area_front();
   }
 }
 
 void get_key_hurt() {
-  cout << "You grabbed the key, but there was a mini bear trap under it, hurting your hand badly" << endl;
+  cout << "You grabbed the key, but hurt your hand on the trap gaurding it." << endl;
   cout << "You did get the key though." << endl;
   cout << endl;
   cout << "Key acquired " << endl;
@@ -295,11 +295,13 @@ void get_key_hurt() {
 }
 
 void inspect_area_front2() {
-  cout << "Write this part of the story here." << endl;
+  cout << "You see the key is actually trapped!" << endl;
+  cout << endl;
   cout << "Do you:" << endl;
-  cout << "1. Disarm trap" << endl;
-  cout << "2. get anyways" << endl;
-  cout << "3. go back" << endl;
+  cout << endl;
+  cout << "1. Disarm the trap." << endl;
+  cout << "2. Go get the key anyways." << endl;
+  cout << "3. Go back to looking at the front door." << endl;
   cout << "Choose: ";
   int choice = 0;
   choice_input(choice);
@@ -315,43 +317,29 @@ void inspect_area_front2() {
   }
   else {
     choice_invalid();
+    inspect_area_front2();
   }
 }
 
 void disarm_trap_front() {
-  cout << "\"add press one to continue\"" << endl;
-  cout << "Do you:" << endl;
-  cout << "1. get key" << endl;
-  cout << "Choose: ";
+  cout << "You disarm the trap and get the key." << endl;
+  cout << endl;
+  cout << "Press 1 to continue" << endl;
   int choice = 0;
   choice_input(choice);
 
   if (1 == choice) {
-    get_key();
-  }
-  else {
-    choice_invalid();
-  }
-}
-
-void get_key() {
-  cout << "Write this part of the story here." << endl;
-  cout << "Do you:" << endl;
-  cout << "1. go to " << endl;
-  cout << "Choose: ";
-  int choice = 0;
-  choice_input(choice);
-
-  if (1 == choice) {
+    key = 1;
     choice_front_door();
   }
   else {
     choice_invalid();
+    disarm_trap_front();
   }
 }
 
 void open_door_front() {
-  cout << "Write this part of the story here." << endl;
+  cout << "TODO." << endl;
   cout << "Do you:" << endl;
   cout << "1. if no key" << endl;
   cout << "2. if kkey" << endl;
@@ -359,15 +347,6 @@ void open_door_front() {
   int choice = 0;
   choice_input(choice);
 
-  if (1 == choice) {
-    choice_front_door();
-  } 
-  else if (2 == choice) {
-    unlock_door_front();
-  }
-  else {
-    choice_invalid();
-  }
 }
 
 void unlock_door_front() {
