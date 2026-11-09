@@ -45,7 +45,7 @@ void method1() {
     average = (double) total / SIZE; // double / int ->
     cout << "Average per day: " << average << endl; 
     cout << item<< " gained per day: " << endl;
-    for (int i=0; 1 < SIZE; i++) {
+    for (int i=0; i < SIZE; i++) {
         cout << "Day" << i+1 << ": " << counts[i] << endl;
     }
 } 
@@ -60,7 +60,7 @@ void method2() {
     int today;
     double average = 0;
     // Get the input, add to total
-    for (int i=0; 1 < SIZE; i++) {
+    for (int i=0; i < SIZE; i++) {
         cout << "Day" << i+1 << ": ";
         cin >> today;
         total += today;
