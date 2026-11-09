@@ -429,11 +429,15 @@ void open_door_back() {
   cout << "Choose: ";
   int choice = 0;
   choice_input(choice);
-  if (1 == choice) {
+  if (choice == 1) {
+    cout << "You really think for a moment and give up, " << endl;
+    cout << "your hands are doing nothing to that welded frame." << endl;
     choice_back_door();
   }
+  else if (choice == 2)
   else {
     choice_invalid();
+    open_door_back();
   }
 }
 
