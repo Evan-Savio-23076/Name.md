@@ -8,66 +8,6 @@ We use void functions to tell a simple story.
 The player makes choices, and each choice calls a function.
 */
 
-/*
-#include <iostream>
-#include <limits>
-using namespace std;
-
-// FUNCTION PROTOTYPES
-// Every function you write must be listed here, above main().
-// The compiler reads the file from top to bottom. A prototype
-// tells it: "this function exists, and its full code is below."
-
-// Integers
-int hands_hurt;
-int brick;
-
-// Void functions
-void main_menu();
-void choice_front_door();
-void choice_back_door();
-void choice_go_home();
-void open_front_door();
-void inspect_front_door();
-
-
-// TODO: add your new prototypes here
-
-int main() {
-cout << "M5LAB1 - Choose Your Own Adventure" << endl;
-// Start the story.
-main_menu();
-// When main_menu() returns, the story is over.
-cout << "Thanks for playing!" << endl;
-return 0; // finished with no errors
-}
-
-// FUNCTION DEFINITIONS
-// The full code for each function goes here, below main().
-
-void main_menu() {
-// A menu that accepts 1, 2, 3, or 4 (quit).
-cout << "Main Menu" << endl;
-cout << "You're in front of a spooky old house..." << endl;
-cout << "Do you:" << endl;
-cout << "1. Try the front door" << endl;
-cout << "2. Sneak around back" << endl;
-cout << "3. Forget it, and go home" << endl;
-cout << "4. [Quit]" << endl;
-cout << "Choose: ";
-int choice = 0;
-cin >> choice;
-if (cin.fail()) {
-// The player typed something that is not a number.
-cin.clear(); // reset cin so it can read again
-choice = 0; // treat it as an invalid choice
-}
-
-// Throw away the rest of the line the player typed.
-cin.ignore(numeric_limits<streamsize>::max(), '\n');
-}
-*/
-
 #include <iostream>
 #include <limits>
 using namespace std;
@@ -95,6 +35,7 @@ void inspect_area_back2();
 void enter_house();
 void choice_input();
 void choice_invalid();
+void hand_damaged();
 
 // Global Ints
 int key;
@@ -144,6 +85,25 @@ void choice_invalid() {
     cout << endl;
     cout << endl;
     cout << endl;
+}
+
+void hand_damaged() {
+  if (hand_health == 2) {
+    cout << "Your hand was hurt a bit" << endl;
+    cout << endl;
+  } 
+  else if (hand_health == 1) {
+    cout << "Your hand was hurt badly" << endl;
+    cout << endl;
+  }
+  else if (hand_health <= 0) {
+    cout << "Your hand is now too hurt to want to do anything" << endl;
+    cout << endl;
+  }
+  else {
+    cout << "error" << endl;
+    cout << endl;
+  }
 }
 
 void main_menu() {
@@ -261,6 +221,8 @@ void inspect_area_front() {
     inspect_area_front2();
   } 
   else if (2 == choice) {
+    hand_health = hand_health - 2;
+    hand_damaged();
     get_key_hurt();
   } 
   else if (3 == choice) {
@@ -282,9 +244,7 @@ void get_key_hurt() {
   cout << "Choose: ";
   int choice = 0;
   choice_input(choice);
-
   if (1 == choice) {
-    hand_health = hand_health - 2;
     key = 1;
     choice_front_door();
   }
@@ -339,14 +299,42 @@ void disarm_trap_front() {
 }
 
 void open_door_front() {
-  cout << "TODO." << endl;
-  cout << "Do you:" << endl;
-  cout << "1. if no key" << endl;
-  cout << "2. if kkey" << endl;
+  cout << "You approach the front door. It appears to be locked with a comedically large padlock." << endl;
+  cout << endl;
+  cout << "Do you try opening the lock?" << endl;
+  cout << endl;
+  cout << "1. Yes" << endl;
+  cout << "2. No" << endl;
+  cout << endl;
   cout << "Choose: ";
   int choice = 0;
   choice_input(choice);
+  if (choice == 1) {
+    if (key == 0) {
+      cout "Unfortunetly you cannot stare at the lock until it opens by itself." << endl;
+      cout << endl;
+      cout << "Press any key (within reason) to move backwards a little." << endl;
+      int choice = 0;
+      choice_input(choice);
+      choice_front_door();
+    }
+    else if (key == 1){
+      cout << "You open the lock and prepare to enter." << endl;
+      cout << endl;
+      cout << "Press any key (within reason) to move backwards a little." << endl;
+      int choice = 0;
+      choice_input(choice);
+      unlock_door_front();
+    }
 
+  }
+  else if (choice == 2) {
+    choice_front_door();
+  }
+  else {
+    choice_invalid();
+    open_door_front();
+  }
 }
 
 void unlock_door_front() {
