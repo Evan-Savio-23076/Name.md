@@ -36,7 +36,7 @@ void method1() {
     int total = 0;
     double average = 0;
     // Get the input, add to total
-    for (int i=0; 1 < SIZE; i++) {
+    for (int i=0; i < SIZE; i++) {
         cout << "Day" << i+1 << ": "; // Print days 1-5, not 0-4
         cin >> counts[i];
         total += counts[i];
