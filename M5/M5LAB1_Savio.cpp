@@ -25,10 +25,6 @@ void disarm_trap_front();
 void open_door_front();
 void unlock_door_front();
 void choice_attack_door();
-void attack_door2();
-void attack_door3();
-void unlock_door_frontalt();
-void smash_knob_secret();
 void open_door_back();
 void inspect_area_back();
 void inspect_area_back2();
@@ -36,10 +32,15 @@ void enter_house();
 void choice_input();
 void choice_invalid();
 void hand_damaged();
+void door_damaged();
+void brick_damaged();
 
 // Global Ints
 int key;
+int brick;
 int hand_health = 3;
+int door_health = 3;
+int brick_health = 2;
 
 int main() {
   cout << endl;
@@ -61,7 +62,6 @@ void choice_input(int &choice) {
     cin.clear(); 
     choice = 0; 
   }
-
   cin.ignore(numeric_limits<streamsize>::max(), '\n');
   cout << endl;
   cout << endl;
@@ -106,6 +106,40 @@ void hand_damaged() {
   }
 }
 
+void door_damaged() {
+  if (door_health == 2) {
+    cout << "The door was damaged a bit, doesn't look like it'd stand a strong hit." << endl;
+    cout << endl;
+  }
+  else if (door_health == 1) {
+    cout << "The door was damaged badly, it looks like it'd break with just one more hit." << endl;
+    cout << endl;
+  }
+  else if (door_health <= 0) {
+    cout << "The door is now broken open and busted in." << endl;
+    cout << endl;
+  }
+  else {
+    cout << "error" << endl;
+    cout << endl;
+  }
+}
+
+void brick_damaged() {
+  if (brick_health == 1) {
+    cout << "The brick was damaged a bit, doesn't look like it'd stand another strike." << endl;
+    cout << endl;
+  }
+  else if (brick_health <= 0) {
+    cout << "The brick is now broken and can't be used anymore." << endl;
+    cout << endl;
+  }
+  else {
+    cout << "error" << endl;
+    cout << endl;
+  }
+}
+
 void main_menu() {
   cout << "What do you choose to do?:" << endl;
   cout << endl;
@@ -116,7 +150,6 @@ void main_menu() {
   cout << endl;
   int choice = 0;
   choice_input(choice);
-
   if (1 == choice) {
     choice_front_door();
   } 
@@ -148,7 +181,6 @@ void choice_front_door() {
   cout << "Choose: ";
   int choice = 0;
   choice_input(choice);
-
   if (1 == choice) {
     if (key == 0) {
       inspect_area_front();
@@ -184,7 +216,6 @@ void choice_back_door() {
   cout << "Choose: ";
   int choice = 0;
   choice_input(choice);
-
   if (1 == choice) {
     open_door_back();
   } 
@@ -216,12 +247,11 @@ void inspect_area_front() {
   cout << "Choose: ";
   int choice = 0;
   choice_input(choice);
-
   if (1 == choice) {
     inspect_area_front2();
   } 
   else if (2 == choice) {
-    hand_health = hand_health - 2;
+    hand_health -= 2;
     hand_damaged();
     get_key_hurt();
   } 
@@ -265,7 +295,6 @@ void inspect_area_front2() {
   cout << "Choose: ";
   int choice = 0;
   choice_input(choice);
-
   if (1 == choice) {
     disarm_trap_front();
   } 
@@ -287,7 +316,6 @@ void disarm_trap_front() {
   cout << "Press 1 to continue" << endl;
   int choice = 0;
   choice_input(choice);
-
   if (1 == choice) {
     key = 1;
     choice_front_door();
@@ -299,7 +327,8 @@ void disarm_trap_front() {
 }
 
 void open_door_front() {
-  cout << "You approach the front door. It appears to be locked with a comedically large padlock." << endl;
+  cout << "You approach the front door. " << endl;
+  cout << "It appears to be locked with a comedically large padlock." << endl;
   cout << endl;
   cout << "Do you try opening the lock?" << endl;
   cout << endl;
@@ -311,7 +340,7 @@ void open_door_front() {
   choice_input(choice);
   if (choice == 1) {
     if (key == 0) {
-      cout "Unfortunetly you cannot stare at the lock until it opens by itself." << endl;
+      cout << "Unfortunetly you cannot stare at the lock until it opens by itself." << endl;
       cout << endl;
       cout << "Press any key (within reason) to move backwards a little." << endl;
       int choice = 0;
@@ -326,7 +355,6 @@ void open_door_front() {
       choice_input(choice);
       unlock_door_front();
     }
-
   }
   else if (choice == 2) {
     choice_front_door();
@@ -338,125 +366,69 @@ void open_door_front() {
 }
 
 void unlock_door_front() {
-  cout << "Write this part of the story here." << endl;
-  cout << "Do you:" << endl;
-  cout << "1. enter house" << endl;
-  cout << "Choose: ";
-  int choice = 0;
-  choice_input(choice);
-
-  if (1 == choice) {
-    enter_house();
-  }
-  else {
-    choice_invalid();
-  }
+  cout << "You open the door and enter the house." << endl;
+  enter_house();
 }
 
 void choice_attack_door() {
-  cout << "Write this part of the story here." << endl;
+  cout << "You feel like attacking the door for whatever reason," << endl;
+  cout << "but are you sure its a good idea?" << endl;
+  cout << endl;
   cout << "Do you:" << endl;
-  cout << "1. You sure? Y" << endl;
-  cout << "2. You sure? N" << endl;
-  cout << "3. You sure? Y (with brick)" << endl;
+  cout << endl;
+  cout << "1. YES!" << endl;
+  cout << "2. No." << endl;
   cout << "Choose: ";
   int choice = 0;
   choice_input(choice);
-
-  if (1 == choice) {
-    attack_door2();
-  } 
-  else if (2 == choice) {
-    choice_front_door();
-  } 
-  else if (3 == choice) {
-    smash_knob_secret();
-  }
-  else {
-    choice_invalid();
-  }
-}
-
-void attack_door2() {
-  cout << "Write this part of the story here." << endl;
-  cout << "Do you:" << endl;
-  cout << "1. continue? Y" << endl;
-  cout << "2. stop" << endl;
-  cout << "Choose: ";
-  int choice = 0;
-  choice_input(choice);
-
-  if (1 == choice) {
-    attack_door3();
-  } 
-  else if (2 == choice) {
-    choice_front_door();
-  }
-  else {
-    choice_invalid();
-  }
-}
-
-void attack_door3() {
-  cout << "Write this part of the story here." << endl;
-  cout << "Do you:" << endl;
-  cout << "1. continue? Y" << endl;
-  cout << "2. stop" << endl;
-  cout << "Choose: ";
-  int choice = 0;
-  choice_input(choice);
-
-  if (1 == choice) {
-    unlock_door_frontalt();
-  } 
-  else if (2 == choice) {
-    main_menu();
-  }
-  else {
-    choice_invalid();
-  }
-}
-
-void unlock_door_frontalt() {
-  cout << "Write this part of the story here." << endl;
-  cout << "Do you:" << endl;
-  cout << "1. enter" << endl;
-  cout << "Choose: ";
-  int choice = 0;
-  choice_input(choice);
-
-  if (1 == choice) {
-    enter_house();
-  }
-  else {
-    choice_invalid();
-  }
-}
-
-void smash_knob_secret() {
-  cout << "Write this part of the story here." << endl;
-  cout << "Do you:" << endl;
-  cout << "1. enter" << endl;
-  cout << "Choose: ";
-  int choice = 0;
-  choice_input(choice);
-
-  if (1 == choice) {
-    enter_house();
-  }
-  else {
-    choice_invalid();
+  if (choice == 1) {
+    if (brick == 1) {
+        cout << "You attack the door with the brick." << endl;
+        cout << endl;
+        door_health -= 2;
+        brick_health -= 1;
+        door_damaged();
+        brick_damaged();
+        choice_attack_door();
+      }
+        else if (hand_health >=1) {
+        cout << "You attack the door without the brick." << endl;
+        cout << endl;
+        door_health -= 1;
+        hand_health -= 1;
+        door_damaged();
+        hand_damaged();
+        choice_attack_door();
+      }
+      else if (hand_health <= 0) {
+        cout << "Your hand is too hurt to try attacking the door again, " << endl;
+        cout << "so you back away a little bit." << endl;
+        cout << endl;
+        choice_front_door
+      }
+    else if (choice == 2) {
+      cout << "You decide attacking a door isn't a good idea, and back up a little bit" << endl;
+      cout << endl;
+      choice_front_door();
+    }
+    else {
+      choice_invalid();
+      choice_attack_door();
+    }
   }
 }
 
 void open_door_back() {
-  cout << "Write this part of the story here." << endl;
+  cout << "There appears to be a cellar welded shut, " << endl;
+  cout << "do you try to open it?" << endl;
+  cout << endl;
   cout << "Do you:" << endl;
-  cout << "1. locked and unmovable" << endl;
+  cout << endl;
+  cout << "1. Try to open the back door?" << endl;
+  cout << "2. Leave it." << endl;
   cout << "Choose: ";
   int choice = 0;
   choice_input(choice);
-
   if (1 == choice) {
     choice_back_door();
   }
@@ -473,7 +445,6 @@ void inspect_area_back() {
   cout << "Choose: ";
   int choice = 0;
   choice_input(choice);
-
   if (1 == choice) {
     inspect_area_back2();
   } 
