@@ -26,14 +26,17 @@ void open_door_front();
 void unlock_door_front();
 void choice_attack_door();
 void open_door_back();
-void inspect_area_back();
-void inspect_area_back2();
 void enter_house();
 void choice_input();
 void choice_invalid();
 void hand_damaged();
 void door_damaged();
 void brick_damaged();
+void End1();
+void End2();
+void End3();
+void End4();
+void End5();
 
 // Global Ints
 int key;
@@ -219,9 +222,16 @@ void choice_back_door() {
   if (1 == choice) {
     open_door_back();
   } 
-  else if (2 == choice) {
-    inspect_area_back();
+  else if (2 == choice || brick == 0) {
+    cout << "You investigate the backyard and find nothing of note besides a brick, " << endl;
+    cout << "you decide to grab and equip it" << endl;
+    cout << endl;
+    brick = 1;
   } 
+  else if (2 == choice || brick == 1) {
+    cout << "The backyard is completely empty." << endl;
+    choice_back_door();
+  }
   else if (3 == choice) {
     main_menu();
   }
@@ -367,6 +377,7 @@ void open_door_front() {
 
 void unlock_door_front() {
   cout << "You open the door and enter the house." << endl;
+  cout << endl;
   enter_house();
 }
 
@@ -404,7 +415,7 @@ void choice_attack_door() {
         cout << "Your hand is too hurt to try attacking the door again, " << endl;
         cout << "so you back away a little bit." << endl;
         cout << endl;
-        choice_front_door
+        choice_front_door();
       }
     else if (choice == 2) {
       cout << "You decide attacking a door isn't a good idea, and back up a little bit" << endl;
@@ -432,51 +443,72 @@ void open_door_back() {
   if (choice == 1) {
     cout << "You really think for a moment and give up, " << endl;
     cout << "your hands are doing nothing to that welded frame." << endl;
+    cout << endl;
     choice_back_door();
   }
-  else if (choice == 2)
+  else if (choice == 2) {
+    cout << "You leave the door and go back into the backyard" << endl;
+    cout << endl;
+    choice_back_door();
+  }
   else {
     choice_invalid();
     open_door_back();
   }
 }
 
-void inspect_area_back() {
-  cout << "Write this part of the story here." << endl;
-  cout << "Do you:" << endl;
-  cout << "1. search more?" << endl;
-  cout << "2. No more search" << endl;
-  cout << "Choose: ";
-  int choice = 0;
-  choice_input(choice);
-  if (1 == choice) {
-    inspect_area_back2();
-  } 
-  else if (2 == choice) {
-    choice_back_door();
-  }
-  else {
-    choice_invalid();
-  }
-}
-
-void inspect_area_back2() {
-  cout << "add brick intiger" << endl;
-  cout << "Do you:" << endl;
-  cout << "1. inspect_area_back2" << endl;
-  cout << "Choose: ";
-  int choice = 0;
-  choice_input(choice);
-
-  if (1 == choice) {
-    choice_back_door();
-  }
-  else {
-    choice_invalid();
-  }
-}
-
 void enter_house() {
-  cout << "You see ghost" << endl;
-  cout << "// make endings if statements" << endl;
+cout << "You enter the house and see what you suspect to be a Ghost!" << endl;
+cout << endl;
+cout << "What do you do?" << endl;
+cout << endl;
+cout << "1. Run away!" << endl;
+cout << "2. Attack the ghost!" << endl;
+cout << "3. Try talking to the ghost." << endl;
+cout << "Choose: " << endl;
+int choice = 0;
+choice_input(choice);
+if (choice == 1) {
+  cout << "You run away from the ghost, " << endl;
+  cout << "which seems confused at your actions." << endl;
+  cout << endl;
+  cout << endl;
+  cout << endl;
+  cout << "You escape and run away from the house, " << endl;
+  cout << "with a admittedly boring tale to go with it." << endl;
+  cout << endl;
+  cout << "You got ending 1 of 5 (Coward!)" << endl;
+}
+else if (choice == 2) {
+  if (brick == 1) {
+    if (hand_health >= 1) {
+      cout << "Do you wish to attack with your hands or the brick?" << endl;
+      cout << endl;
+      cout << "1. Hands" << endl;
+      cout << "2. Brick" << endl;
+      cout << endl;
+      cout << "Choose: " << endl;
+      choice = 0;
+      choice_input(choice);
+      if (choice == 1) 
+      cout << "You attack the ghost with your hands, " << endl;
+      cout << "knocking it out in one clean punch." << endl;
+      cout << endl;
+      cout << "Turns out it was just a homeless squatter... oops..." << endl;
+      cout << endl;
+      cout << "You got ending 2 of 5 (Homeless Hate Crime!)" << endl;
+      }
+  }
+    else if (hand_health <= 0) {
+    
+  }  
+  }
+  else if (brick == 0) {
+    if (hand_health >= 1) {
+
+  }
+    else if (hand_health <= 0) {
+    
+  }  
+  }  
 }
