@@ -12,19 +12,19 @@ using namespace std;
 // the getLength,
 // getWidth, getArea, and displayData
 // functions here.
-void getLength();
-void getWidth();
-void getArea();
-void 
+double getLength();
+double getWidth();
+double getArea(double length, double width);
+void displayData(double length, double width, double area);
 
 int main()
 {
 	// This program calculates the area of a rectangle.
 	// TODO: fix any syntax errors
 	
-   double length,    // The rectangle's length
-          width,     // The rectangle's width
-          area;      // The rectangle's area
+    double length;    // The rectangle's length
+    double width;     // The rectangle's width
+    double area;      // The rectangle's area
           
    // Get the rectangle's length.
    length = getLength();
@@ -33,7 +33,7 @@ int main()
    width = getWidth();
    
    // Get the rectangle's area.
-   are = getArea();
+   area = getArea(length, width);
    
    // Display the rectangle's data.
    displayData(length, width, area);
@@ -46,12 +46,26 @@ int main()
 // and displayData functions below.                 *
 //***************************************************
 
-void getLength(){
-
+double getLength() {
+   double length;
+   cout << "Enter the rectangle's length." << endl;
+   cin  >> length;
+   return length;
 }
-void getWidth() {
-
+double getWidth() {
+   double width;
+   cout << "Enter the rectangle's width." << endl;
+   cin  >> width;
+   return width;
 }
-void getArea(){
-
+double getArea(double length, double width) {
+   return width * length;
+}
+void displayData(double length, double width, double area) {
+   cout << "-----------------------" << endl;
+   cout << "-      Rectangle      -" << endl;
+   cout << "-----------------------" << endl;
+   cout << "Length: " <<   length    << endl;
+   cout << "Width: "  <<   width     << endl;
+   cout << "Area: "   <<   area      << endl;
 }
