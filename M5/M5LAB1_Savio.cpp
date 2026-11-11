@@ -222,13 +222,14 @@ void choice_back_door() {
   if (1 == choice) {
     open_door_back();
   } 
-  else if (2 == choice || brick == 0) {
+  else if (2 == choice && brick == 0) {
     cout << "You investigate the backyard and find nothing of note besides a brick, " << endl;
     cout << "you decide to grab and equip it" << endl;
     cout << endl;
     brick = 1;
+    choice_back_door();
   } 
-  else if (2 == choice || brick == 1) {
+  else if (2 == choice && brick == 1) {
     cout << "The backyard is completely empty." << endl;
     choice_back_door();
   }
@@ -382,6 +383,12 @@ void unlock_door_front() {
 }
 
 void choice_attack_door() {
+  if (door_health <= 0) {
+    cout << "The door is destroyed." << endl;
+    cout << endl;
+    enter_house();
+    return;
+  }
   cout << "You feel like attacking the door for whatever reason," << endl;
   cout << "but are you sure its a good idea?" << endl;
   cout << endl;
@@ -417,15 +424,15 @@ void choice_attack_door() {
         cout << endl;
         choice_front_door();
       }
-    else if (choice == 2) {
-      cout << "You decide attacking a door isn't a good idea, and back up a little bit" << endl;
-      cout << endl;
-      choice_front_door();
-    }
-    else {
-      choice_invalid();
-      choice_attack_door();
-    }
+  }
+  else if (choice == 2) {
+    cout << "You decide attacking a door isn't a good idea, and back up a little bit" << endl;
+    cout << endl;
+    choice_front_door();
+  }
+  else {
+    choice_invalid();
+    choice_attack_door();
   }
 }
 
@@ -468,20 +475,20 @@ cout << "3. Try talking to the ghost." << endl;
 cout << "Choose: " << endl;
 int choice = 0;
 choice_input(choice);
-if (choice == 1) {
-  cout << "You run away from the ghost, " << endl;
-  cout << "which seems confused at your actions." << endl;
-  cout << endl;
-  cout << endl;
-  cout << endl;
-  cout << "You escape and run away from the house, " << endl;
-  cout << "with a admittedly boring tale to go with it." << endl;
-  cout << endl;
-  cout << "You got ending 1 of 5 (Coward!)" << endl;
-}
-else if (choice == 2) {
-  if (brick == 1) {
-    if (hand_health >= 1) {
+  if (choice == 1) {
+    cout << "You run away from the ghost, " << endl;
+    cout << "which seems confused at your actions." << endl;
+    cout << endl;
+    cout << endl;
+    cout << endl;
+    cout << "You escape and run away from the house, " << endl;
+    cout << "with a admittedly boring tale to go with it." << endl;
+    cout << endl;
+    cout << "You got ending 1 of 5 (Coward!)" << endl;
+  }
+  else if (choice == 2) {
+    if (brick == 1) {
+      if (hand_health >= 1) {
       cout << "Do you wish to attack with your hands or the brick?" << endl;
       cout << endl;
       cout << "1. Hands" << endl;
@@ -490,25 +497,63 @@ else if (choice == 2) {
       cout << "Choose: " << endl;
       choice = 0;
       choice_input(choice);
-      if (choice == 1) 
+      if (choice == 1) {
+        cout << "You attack the ghost with your hands, " << endl;
+        cout << "knocking it out in one clean punch." << endl;
+        cout << endl;
+        cout << "Turns out it was just a homeless squatter... oops..." << endl;
+        cout << endl;
+        cout << "You got ending 2 of 5 (Homeless Hate Crime!)" << endl;
+      }
+      else if (choice == 2) {
+        cout << "You throw the brick at the ghost, " << endl;
+        cout << "and it falls witha dull thud." << endl;
+        cout << endl;
+        cout << "Turns out it was just a homeless squatter... oops..." << endl;
+        cout << endl;
+        cout << "You got ending 3 of 5 (Homeless Hate Crime! (Brick edition))" << endl;
+      }
+    }
+      else if (hand_health <= 0) {
+      cout << "You throw the brick at the ghost, " << endl;
+      cout << "and it falls witha dull thud." << endl;
+      cout << endl;
+      cout << "Turns out it was just a homeless squatter... oops..." << endl;
+      cout << endl;
+      cout << "You got ending 3 of 5 (Homeless Hate Crime! (Brick edition))" << endl;
+    }  
+    }
+    else if (brick == 0) {
+      if (hand_health >= 1) {
       cout << "You attack the ghost with your hands, " << endl;
       cout << "knocking it out in one clean punch." << endl;
       cout << endl;
       cout << "Turns out it was just a homeless squatter... oops..." << endl;
       cout << endl;
       cout << "You got ending 2 of 5 (Homeless Hate Crime!)" << endl;
-      }
+    }
+      else if (hand_health <= 0) {
+      cout << "You attack the ghost with your hands, " << endl;
+      cout << "but your hands are too weak to do any damage." << endl;
+      cout << endl;
+      cout << "Turns out the ghost was a homeless squatter, " << endl;
+      cout << "and he beats you up for attacking him." << endl;
+      cout << endl;
+      cout << "You got ending 4 of 5 (Self Defense!)" << endl;
+    }  
+    }  
   }
-    else if (hand_health <= 0) {
-    
-  }  
+  else if (choice == 3) {
+    cout << "You try talking to the ghost, " << endl;
+    cout << "and it talks back to you." << endl;
+    cout << endl;
+    cout << "Turns out it was some hobo squatting in the house." << endl;
+    cout << "He's actually a pretty nice guy." << endl;
+    cout << endl;
+    cout << "You got ending 5 of 5 (Good Ending)" << endl;
   }
-  else if (brick == 0) {
-    if (hand_health >= 1) {
-
+  else {
+    choice_invalid();
+    enter_house();
   }
-    else if (hand_health <= 0) {
-    
-  }  
-  }  
 }
