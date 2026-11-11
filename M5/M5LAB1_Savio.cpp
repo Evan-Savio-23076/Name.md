@@ -1,8 +1,8 @@
 /*
 CSC 134
 M5LAB1 - Choose Your Own Adventure
-[name]
-[date]
+Savio
+11/11 (when it was finished)
 This template is a starting point for your own program.
 We use void functions to tell a simple story.
 The player makes choices, and each choice calls a function.
