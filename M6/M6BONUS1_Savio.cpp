@@ -102,23 +102,22 @@ if (command == "quit" || command == "q") {
 else {
     bool validDirection = false;
     for (int dir = 0; dir < NUM_DIRECTIONS; dir++) {
-    if (command == DIRECTION_NAMES[dir] || (command.length() == 1 && command[0] == DIRECTION_NAMES[dir][0])) {
-        validDirection = true;
-        cout << DIRECTION_NAMES[dir] << " ";
-        hasExits = true;
+        if (command == DIRECTION_NAMES[dir] || (command.length() == 1 && command[0] == DIRECTION_NAMES[dir][0])) {
+            validDirection = true;
+            if (connections[currentRoom][dir] != -1) {
+                currentRoom = connections[currentRoom][dir];
+            } 
+            else {
+                cout << "You can't go " << DIRECTION_NAMES[dir] << " from here." << endl;
+            }
+            break; // Stop checking other directions once we found a match
+        }
     }
-    if (connections[currentRoom][dir] != -1) {
-        currentRoom = connections[currentRoom][dir];
-    } 
-    else {
-        cout << "You can't go " << DIRECTION_NAMES[dir] << " from here." << endl;
-    }
+    // If the loop finished without matching any known direction
     if (!validDirection) {
-        cout << "I don't understand '" << command << "'. Try another directi" << endl;
+        cout << "I don't understand '" << command << "'. Try north, south, east, west, up, down, or quit." << endl;
     }
-    break;
 }
 }
 return 0;
-}
 }
