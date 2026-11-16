@@ -81,88 +81,44 @@ cout << roomDescriptions[currentRoom] << endl;
 cout << "Exits: ";
 bool hasExits = false;
 for (int dir = 0; dir < NUM_DIRECTIONS; dir++) {
-// Match full word ("north") or first letter ("n")
-if (command == DIRECTION_NAMES[dir] || (command.length() == 1 && command[0] == DIRECTION_NAMES[dir][0])) {
-    validDirection = true;
-    if (connections[currentRoom][dir] != -1) {
-        currentRoom = connections[currentRoom][dir];
-    } else {
-        cout << "You can't go " << DIRECTION_NAMES[dir] << " from here." << endl;
-    }
-    break;
-}
-}
-for (int dir = 0; dir < NUM_DIRECTIONS; dir++) {
     if (connections[currentRoom][dir] != -1) {
         cout << DIRECTION_NAMES[dir] << " ";
         hasExits = true;
     }
 }
-    if (!hasExits) {
-        cout << "none";
-    }
-    cout << endl;
-    string command;
-    cout << "\nWhat would you like to do? ";
-    if (!(cin >> command)) {
-        break; // KEEP: input ended (Ctrl+D). Stop the loop. Without this line, the game never ends.
-    }
-if (command == "north" || command == "n" || command == "N") {
-    if (connections[currentRoom][NORTH] != -1) {
-        currentRoom = connections[currentRoom][NORTH]; // move to the new room
-    } 
-    else {
-        cout << "You can't go that way." << endl;
-    }
-} 
-else if (command == "east" || command == "e" || command == "E") {
-    if (connections[currentRoom][EAST] != -1) {
-        currentRoom = connections[currentRoom][EAST];
-    } 
-    else {
-        cout << "You can't go that way." << endl;
-    }
+if (!hasExits) {
+    cout << "none";
 }
-else if (command == "up" || command == "u" || command == "U") {
-    if (connections[currentRoom][UP] != -1) {
-        currentRoom = connections[currentRoom][UP];
-    } 
-    else {
-        cout << "You can't go up that way." << endl;
-    }
+cout << endl;
+cout << endl;
+string command;
+cout << "\nWhere would you like to go? ";
+if (!(cin >> command)) {
+    break; // KEEP: input ended (Ctrl+D). Stop the loop. Without this line, the game never ends.
 }
-else if (command == "down" || command == "d" || command == "D") {
-    if (connections[currentRoom][DOWN] != -1) {
-        currentRoom = connections[currentRoom][DOWN];
-    } 
-    else {
-        cout << "You can't go down that way." << endl;
-    }
+if (command == "quit" || command == "q") {
+    gameRunning = false;
 }
-else if (command == "south" || command == "s" || command == "S") {
-    if (connections[currentRoom][SOUTH] != -1) {
-        currentRoom = connections[currentRoom][SOUTH];
-    } 
-    else {
-        cout << "You can't go that way." << endl;
-    }
-} 
-else if (command == "west" || command == "w" || command == "W") {
-    if (connections[currentRoom][WEST] != -1) {
-        currentRoom = connections[currentRoom][WEST];
-    } 
-    else {
-        cout << "You can't go that way." << endl;
-    }
-} 
-else if (command == "quit" || command == "q" || command == "Q") {
-    gameRunning = false; // Step 4 will end the loop
-} 
 else {
-    cout << "I don't understand that command." << endl;
+    bool validDirection = false;
+    for (int dir = 0; dir < NUM_DIRECTIONS; dir++) {
+    if (command == DIRECTION_NAMES[dir] || (command.length() == 1 && command[0] == DIRECTION_NAMES[dir][0])) {
+        validDirection = true;
+        cout << DIRECTION_NAMES[dir] << " ";
+        hasExits = true;
+    }
+    if (connections[currentRoom][dir] != -1) {
+        currentRoom = connections[currentRoom][dir];
+    } 
+    else {
+        cout << "You can't go " << DIRECTION_NAMES[dir] << " from here." << endl;
+    }
+    if (!validDirection) {
+        cout << "I don't understand '" << command << "'. Try another directi" << endl;
+    }
+    break;
 }
 }
-// EDIT: write your own goodbye.
-cout << "Thanks for playing!" << endl;
 return 0;
+}
 }
